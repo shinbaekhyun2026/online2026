@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>온라인 교무실</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Noto Sans KR', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* 학교 분위기의 은은한 광원 효과 */
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.15), rgba(15, 23, 42, 0.8));
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+
+        main {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        /* 10개 버튼 그리드 레이아웃 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .office-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            text-decoration: none;
+            color: #f8fafc;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .office-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(96, 165, 250, 0.5);
+            box-shadow: 0 20px 30px -10px rgba(59, 130, 246, 0.3);
+        }
+
+        .icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .office-card:hover .icon-box {
+            transform: scale(1.1);
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            word-break: keep-all;
+        }
+
+        /* 아이콘 색상 커스텀 */
+        .c-blue { color: #60a5fa; }
+        .c-green { color: #4ade80; }
+        .c-yellow { color: #facc15; }
+        .c-purple { color: #c084fc; }
+        .c-red { color: #f87171; }
+        .c-orange { color: #fb923c; }
+        .c-teal { color: #2dd4bf; }
+
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-overlay"></div>
+
+    <header>
+        <h1>🏫 스마트 온라인 교무실</h1>
+        <p>원하시는 업무 메뉴를 선택하시면 바로 연결됩니다.</p>
+    </header>
+
+    <main>
+        <div class="grid-container">
+            <!-- 1. 나이스(NEIS) -->
+            <a href="https://www.neis.go.kr" target="_blank" class="office-card">
+                <div class="icon-box c-blue"><i class="fa-solid fa-laptop-code"></i></div>
+                <span class="card-title">나이스 (NEIS)</span>
+            </a>
+
+            <!-- 2. K-에듀파인 -->
+            <a href="https://kleaf.kleaf.go.kr" target="_blank" class="office-card">
+                <div class="icon-box c-purple"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <span class="card-title">K-에듀파인</span>
+            </a>
+
+            <!-- 3. 학교 홈페이지 -->
+            <a href="#" target="_blank" class="office-card">
+                <div class="icon-box c-green"><i class="fa-solid fa-school"></i></div>
+                <span class="card-title">학교 홈페이지</span>
+            </a>
+
+            <!-- 4. 신백현중 보물 창고 (수정 완료) -->
+            <a href="https://docs.google.com/spreadsheets/d/1Q6N_aM4Oy8IAHlOX8BEabyekh6Yho-xalQV8CbwfbkY/edit?gid=1872786866#gid=1872786866" target="_blank" class="office-card">
+                <div class="icon-box c-yellow"><i class="fa-brands fa-google-drive"></i></div>
+                <span class="card-title">교무 드라이브</span>
+            </a>
+
+            <!-- 5. 구글 클래스룸 -->
+            <a href="https://classroom.google.com" target="_blank" class="office-card">
+                <div class="icon-box c-teal"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <span class="card-title">구글 클래스룸</span>
+            </a>
+
+ 
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 온라인 교무실 시스템 | 교직원 전용 업무 포털</p>
+    </footer>
+
+</body>
+</html>
