@@ -14,7 +14,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* 기본 배경색을 어두운 네이비(#0f172a)로 확실히 설정 */
+        /* 기본 배경색 지정으로 흰 화면 현상 방지 */
         html, body {
             background-color: #0f172a !important;
             color: #ffffff;
@@ -55,7 +55,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            color: #60a5fa; /* 기본 글자색 보장 */
+            color: #60a5fa;
             background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -83,7 +83,6 @@
             justify-content: center;
         }
 
-        /* 카드 배경색 대체 기본값 설정 */
         .office-card {
             background-color: #1e293b;
             background: rgba(30, 41, 59, 0.8);
@@ -100,6 +99,7 @@
             text-decoration: none;
             color: #ffffff;
             box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.4);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .office-card:hover {
@@ -183,7 +183,7 @@
 
     <main>
         <div class="grid-container">
-            <!-- 1. 오늘의 일정 (노션 캘린더) -->
+            <!-- 1. 오늘의 일정 (요청하신 노션 캘린더 주소 연결) -->
             <a href="https://calendar.notion.so/" target="_blank" class="office-card">
                 <div class="icon-box c-calendar"><i class="fa-solid fa-calendar-days"></i></div>
                 <span class="card-title">오늘의 일정<br>(노션 캘린더)</span>
