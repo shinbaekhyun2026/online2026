@@ -100,6 +100,8 @@
             color: #ffffff;
             box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.4);
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
         }
 
         .office-card:hover {
@@ -141,6 +143,91 @@
         .c-classroom { color: #2dd4bf; }
         .c-ai { color: #a78bfa; }
 
+        /* 서브 외부링크 아이콘 */
+        .external-link-icon {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            font-size: 13px;
+            color: #94a3b8;
+            opacity: 0.7;
+            padding: 4px;
+        }
+
+        .external-link-icon:hover {
+            color: #60a5fa;
+            opacity: 1;
+        }
+
+        /* 캘린더 모달(팝업창) 스타일 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .modal-content {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 900px;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-header {
+            padding: 14px 20px;
+            background: #0f172a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-header h2 {
+            font-size: 1rem;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .modal-close-btn:hover {
+            color: #ffffff;
+        }
+
+        .modal-body {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         footer {
             margin-top: 40px;
             padding: 15px;
@@ -151,24 +238,12 @@
         }
 
         @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
-            .grid-container {
-                gap: 12px;
-            }
-            .office-card {
-                padding: 22px 12px;
-                border-radius: 16px;
-            }
-            .icon-box {
-                width: 48px;
-                height: 48px;
-                font-size: 22px;
-            }
-            .card-title {
-                font-size: 14px;
-            }
+            header h1 { font-size: 1.5rem; }
+            .grid-container { gap: 12px; }
+            .office-card { padding: 22px 12px; border-radius: 16px; }
+            .icon-box { width: 48px; height: 48px; font-size: 22px; }
+            .card-title { font-size: 14px; }
+            .modal-content { height: 90vh; }
         }
     </style>
 </head>
@@ -183,11 +258,14 @@
 
     <main>
         <div class="grid-container">
-            <!-- 1. 오늘의 일정 (공개 노션 캘린더 페이지 연결) -->
-            <a href="https://plausible-clave-a20.notion.site/3d8930617c3f80399197cea8e06b1a7b?v=3d8930617c3f8065b488000cf850929e" target="_blank" class="office-card">
+            <!-- 1. 오늘의 일정 (모달 팝업 및 최신 노션 링크 반영) -->
+            <div class="office-card" onclick="openCalendarModal()">
+                <a href="https://plausible-clave-a20.notion.site/3d8930617c3f80399197cea8e06b1a7b?v=3d8930617c3f8065b488000cf850929e" target="_blank" class="external-link-icon" title="새 창으로 열기" onclick="event.stopPropagation();">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
                 <div class="icon-box c-calendar"><i class="fa-solid fa-calendar-days"></i></div>
                 <span class="card-title">오늘의 일정<br>(노션 캘린더)</span>
-            </a>
+            </div>
 
             <!-- 2. 보물창고 -->
             <a href="https://docs.google.com/spreadsheets/d/1Q6N_aM4Oy8IAHlOX8BEabyekh6Yho-xalQV8CbwfbkY/edit?gid=1872786866#gid=1872786866" target="_blank" class="office-card">
@@ -209,9 +287,31 @@
         </div>
     </main>
 
+    <!-- 캘린더 팝업 레이어 (최신 노션 URL 반영) -->
+    <div id="calendarModal" class="modal-overlay" onclick="closeCalendarModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2>📅 신백현중 학사일정 (노션)</h2>
+                <button class="modal-close-btn" onclick="closeCalendarModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="https://plausible-clave-a20.notion.site/3d8930617c3f80399197cea8e06b1a7b?v=3d8930617c3f8065b488000cf850929e"></iframe>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>© 2026 신백현중학교 온라인 교무실 System</p>
     </footer>
 
+    <script>
+        function openCalendarModal() {
+            document.getElementById('calendarModal').style.display = 'flex';
+        }
+        function closeCalendarModal() {
+            document.getElementById('calendarModal').style.display = 'none';
+        }
+    </script>
+
 </body>
-</html>
+</html>    
