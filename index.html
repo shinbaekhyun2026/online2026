@@ -13,13 +13,13 @@
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Noto Sans KR', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
-
+     
         html, body {
             background-color: #0f172a !important;
             color: #ffffff;
             min-height: 100vh;
         }
-
+     
         body {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             display: flex;
@@ -30,7 +30,7 @@
             padding: 20px 0;
             overflow-x: hidden;
         }
-
+     
         .bg-overlay {
             position: absolute;
             top: 0;
@@ -41,7 +41,7 @@
             z-index: 0;
             pointer-events: none;
         }
-
+     
         header {
             text-align: center;
             margin-top: 15px;
@@ -49,7 +49,7 @@
             z-index: 1;
             padding: 0 15px;
         }
-
+     
         header h1 {
             font-size: 1.8rem;
             font-weight: 700;
@@ -61,27 +61,27 @@
             margin-bottom: 8px;
             word-break: keep-all;
         }
-
+     
         header p {
             font-size: 0.88rem;
             color: #94a3b8;
             word-break: keep-all;
         }
-
+     
         main {
             width: 100%;
             max-width: 600px;
             padding: 0 16px;
             z-index: 1;
         }
-
+     
         .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
             justify-content: center;
         }
-
+     
         .office-card {
             background-color: #1e293b;
             background: rgba(30, 41, 59, 0.8);
@@ -100,7 +100,7 @@
             box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.4);
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
+     
         .office-card:hover {
             transform: translateY(-4px);
             background-color: #334155;
@@ -108,12 +108,12 @@
             border-color: rgba(96, 165, 250, 0.5);
             box-shadow: 0 15px 25px -8px rgba(59, 130, 246, 0.3);
         }
-
+     
         .office-card:active {
             transform: scale(0.96);
             background-color: #334155;
         }
-
+     
         .icon-box {
             width: 56px;
             height: 56px;
@@ -125,7 +125,7 @@
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
+     
         .card-title {
             font-size: 15px;
             font-weight: 600;
@@ -134,12 +134,12 @@
             line-height: 1.3;
             color: #ffffff;
         }
-
+     
         .c-calendar { color: #f87171; }
         .c-treasure { color: #facc15; }
         .c-classroom { color: #2dd4bf; }
         .c-comtime { color: #38bdf8; }
-
+     
         footer {
             margin-top: 40px;
             padding: 15px;
@@ -148,7 +148,7 @@
             color: #64748b;
             z-index: 1;
         }
-
+     
         @media (max-width: 480px) {
             header h1 { font-size: 1.5rem; }
             .grid-container { gap: 12px; }
@@ -159,34 +159,34 @@
     </style>
 </head>
 <body>
-
+     
     <div class="bg-overlay"></div>
-
+     
     <header>
         <h1>🏫 신백현중학교 온라인 교무실</h1>
         <p>원하시는 업무 메뉴를 선택하시면 바로 연결됩니다.</p>
     </header>
-
+     
     <main>
         <div class="grid-container">
             <!-- 1. 오늘의 일정 -->
-            <a href="https://notion.so/3d8930617c3f80399197cea8e06b1a7b?v=3d8930617c3f80c58b03000cd06654bf" target="_blank" rel="noopener noreferrer" class="office-card">
+            <a href="https://plausible-clave-a20.notion.site/3d8930617c3f80399197cea8e06b1a7b?v=3d8930617c3f80c58b03000cd06654bf&source=copy_link" target="_blank" rel="noopener noreferrer" class="office-card">
                 <div class="icon-box c-calendar"><i class="fa-solid fa-calendar-days"></i></div>
                 <span class="card-title">오늘의 일정<br>(노션 캘린더)</span>
             </a>
-
+     
             <!-- 2. 보물창고 -->
             <a href="https://docs.google.com/spreadsheets/d/1Q6N_aM4Oy8IAHlOX8BEabyekh6Yho-xalQV8CbwfbkY/edit?gid=1872786866#gid=1872786866" target="_blank" rel="noopener noreferrer" class="office-card">
                 <div class="icon-box c-treasure"><i class="fa-solid fa-box-archive"></i></div>
                 <span class="card-title">보물창고</span>
             </a>
-
+     
             <!-- 3. 구글 클래스룸 -->
             <a href="https://edu.google.com/intl/ALL_kr/workspace-for-education/products/classroom/" target="_blank" rel="noopener noreferrer" class="office-card">
                 <div class="icon-box c-classroom"><i class="fa-solid fa-chalkboard-user"></i></div>
                 <span class="card-title">구글 클래스룸</span>
             </a>
-
+     
             <!-- 4. 컴시간 알리미 -->
             <a href="http://xn--s39aqy283b66bj2x.kr/" target="_blank" rel="noopener noreferrer" class="office-card">
                 <div class="icon-box c-comtime"><i class="fa-solid fa-clock"></i></div>
@@ -194,10 +194,10 @@
             </a>
         </div>
     </main>
-
+     
     <footer>
         <p>© 2026 신백현중학교 온라인 교무실 System</p>
     </footer>
-
+     
 </body>
 </html>
